@@ -1,0 +1,35 @@
+.productPage {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 40px;
+    margin: 40px;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #F5F5F5;
+}
+
+.productPageImage {
+    height: 500px;
+}
+
+.productPageBox {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 500px;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.purchase-btn {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    border: none;
+    background-color: #007E0D;
+    color: white;
+    font-size: 100%;
+}
