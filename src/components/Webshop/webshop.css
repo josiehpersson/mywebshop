@@ -1,15 +1,15 @@
 .navbar {
     height: 100px;
     width: 100%;
-    background: #6D00C2;
+    background: #FFA800;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: fixed;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
     color: white;
     text-decoration: none;
+    margin-top: 0px;
 }
 
 .nav-link, .nav-link:visited {
@@ -35,13 +35,12 @@
     border: none;
     outline: none;
     font-size: 150%;
-    color: #6D00C2;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .search-container > i {
     font-size: 150%;
-    color: #6D00C2;
+    color: #FFA800;
 z-index: 1;
 margin-left: -30px;
 
@@ -60,20 +59,4 @@ margin-left: -30px;
     flex-flow: column nowrap;
     height: 100%;
     justify-content: space-evenly;
-}
-
-.cart-link {
-    margin-right: 50px;
-}
-
-.cart-container {
-    display: flex;
-    flex-flow: column-reverse nowrap;
-    height: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.fa-shopping-cart {
-    font-size: 150%;
-    margin-bottom: 5px;
 }

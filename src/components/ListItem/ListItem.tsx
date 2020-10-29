@@ -14,9 +14,12 @@ interface IProps {
 export default function ListItem(props: IProps) {
 
     return(
-        <div className="list-item" key={props.key}>
+        <div 
+        className="list-item" 
+        key={props.key}
+        data-info={[props.price,props.name]}>
                 <h3>{props.name}</h3>
-            <img className="product-img" src={props.imageUrl} alt={props.alt}/>
+            <img className="product-img-list" src={props.imageUrl} alt={props.alt}/>
                 <strong>{props.price}:-</strong>
 <Link to={props.link}>
     <button>DETAILS</button>

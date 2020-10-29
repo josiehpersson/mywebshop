@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useImperativeHandle} from 'react';
 import { useParams } from 'react-router-dom';
 import './productPage.css';
 import axios from 'axios';
@@ -8,12 +8,20 @@ interface IParams {
     id: string;
 }
 
-export default function ProductPage() {
+export interface ICart {
+    addName: string;
+    addPrice: number;
+}
+export interface IClickProps {
+    updateCount(value: ICart): void;
+}
+
+export default function ProductPage(props: IClickProps) {
 
     const [productInfo, setProductInfo] = useState(Object);
 
     let { id } = useParams<IParams>();
-
+    
     useEffect(() => {
         axios.get(`http://medieinstitutet-wie-products.azurewebsites.net/api/products/${id}`)
         .then(res => {
@@ -24,16 +32,25 @@ export default function ProductPage() {
             console.log(err)
         })
     },[])
+    function handleClick () {
+        let product = {
+            addName: productInfo.name,
+            addPrice: productInfo.price
+        }
+        props.updateCount(product);
+        console.log(product);
+    }
+
         return(
-            <div key={productInfo.id}>
-    <div className="productPage"> 
-            <img className="productPageImage" src={productInfo.imageUrl}/>
-        <div className="productPageBox"> 
-            <h2 className="productPageName">{productInfo.name}</h2>
-            <p className="productPageDescription">{productInfo.description}</p>
+            <div className="page-container" key={productInfo.id}>
+    <div className="product-page"> 
+            <img className="product-img" src={productInfo.imageUrl}/>
+        <div className="product-info"> 
+            <h2>{productInfo.name}</h2>
+            <p>{productInfo.description}</p>
             <p>Year: {productInfo.year}</p>
-            <strong className="productPagePrice">{productInfo.price}kr</strong>
-    <button className="purchase-btn"><i className="fas fa-cart-arrow-down"></i> Add to Cart </button>
+            <strong>{productInfo.price}kr</strong>
+    <button type="button" className="purchase-btn" onClick={handleClick}><i className="fas fa-cart-arrow-down"></i> Add to Cart </button>
         </div>
     </div>
     </div>)

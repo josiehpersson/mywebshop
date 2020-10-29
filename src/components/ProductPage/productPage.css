@@ -1,4 +1,4 @@
-.productPage {
+.product-page {
     display: flex;
     flex-flow: row nowrap;
     padding: 40px;
@@ -8,11 +8,11 @@
     background-color: #F5F5F5;
 }
 
-.productPageImage {
+.product-img {
     height: 500px;
 }
 
-.productPageBox {
+.product-info {
     display: flex;
     flex-flow: column nowrap;
     height: 500px;
@@ -29,7 +29,7 @@
     width: 200px;
     border-radius: 10px;
     border: none;
-    background-color: #007E0D;
+    background-color: #FFA800;
     color: white;
     font-size: 100%;
 }
