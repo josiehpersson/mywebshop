@@ -5,6 +5,8 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    color: white;
+    text-decoration: none !important;
 }
 
 .cart-link {

@@ -1,0 +1,38 @@
+.checkout-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 30vw;
+    justify-content: space-evenly;
+    height: 500px;
+}
+
+.input-container {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.input-container > input {
+    height: 30px;
+    border: 1px solid #FFA800;
+    border-radius: 10px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.input-container > input:first-of-type,
+.input-container > input:nth-of-type(2),
+.input-container > input:nth-of-type(4),
+.input-container > input:nth-of-type(5) {
+    width: 50%;
+}
+
+label {
+    margin: 10px auto 3px 0px;
+    font-size: 120%;
+}

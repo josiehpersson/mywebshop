@@ -12,7 +12,6 @@ function Home(){
     useEffect(() => {
         axios.get('http://medieinstitutet-wie-products.azurewebsites.net/api/products')
         .then(res => {
-            console.log(res)
             setProducts(res.data)
         })
         .catch(err =>{
