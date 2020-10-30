@@ -81,9 +81,9 @@ export default function Userform(props: IUserFormProps) {
           onChange={updateUserForm}
         />
       </div>
-      
+
       <button type="button" onClick={handleClick}>
-        Send
+        Check out
       </button>
     </form>
   );

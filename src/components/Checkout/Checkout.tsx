@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './checkout.css';
 import Userform, { IUserForm } from './Userform';
-import CheckoutIteem from './CheckoutItem';
 import CheckoutItem from './CheckoutItem';
 
 export interface IShoppingCart {

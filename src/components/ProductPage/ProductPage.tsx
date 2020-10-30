@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useImperativeHandle } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './productPage.css';
 import axios from 'axios';
