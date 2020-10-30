@@ -48,9 +48,9 @@ function Webshop() {
           </Link>
 
           <Link to="/checkout" className="nav-link">
+          <ShoppingCart total={cartTotal} />
           </Link>
         </div>
-          <ShoppingCart total={cartTotal} />
       </nav>
       <div className="app">
         <Switch>

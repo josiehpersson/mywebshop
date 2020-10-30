@@ -28,11 +28,9 @@ export default function Userform(props: IUserFormProps) {
     const name = e.target.name;
     const value = e.target.value;
     setUserForm({ ...userForm, [name]: value });
-  }
-
-  function handleClick() {
     props.updateParent(userForm);
   }
+
   return (
     <form>
       <div className="input-container">
@@ -80,11 +78,8 @@ export default function Userform(props: IUserFormProps) {
           value={userForm.city}
           onChange={updateUserForm}
         />
-      </div>
 
-      <button type="button" onClick={handleClick}>
-        Check out
-      </button>
+      </div>
     </form>
   );
 }
