@@ -8,7 +8,8 @@ interface IParams {
 }
 
 export interface ICart {
-  id: number;
+    name: string;
+ price: number;
 }
 export interface IClickProps {
   updateCount(value: ICart): void;
@@ -34,7 +35,8 @@ export default function ProductPage(props: IClickProps) {
 
   function handleClick() {
     let product = {
-      id: productInfo.id,
+      name: productInfo.name,
+      price: productInfo.price
     };
     props.updateCount(product);
   }
