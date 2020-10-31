@@ -68,7 +68,7 @@ export default function Checkout(props: IShoppingCart) {
       createdBy: userForm,
       created: date
     }
-    axios.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {newOrder})
+    axios.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders/', {newOrder})
     .then(function (response) {
       console.log(response);
     })
