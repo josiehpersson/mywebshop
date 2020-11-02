@@ -36,9 +36,8 @@ export default function Checkout(props: IShoppingCart) {
 
   const [sum, setSum] = useState(0);
 
-  const [date,setDate] = useState('');
-
   const myCart: Array<{ name: string, price: number }> = [];
+
 
   useEffect(() => {
     myCart.push(...shoppingCart);
@@ -58,24 +57,39 @@ export default function Checkout(props: IShoppingCart) {
 
   function placeOrder(e: MouseEvent<HTMLButtonElement>) {
     let newDate = new Date();
-    setDate(JSON.stringify(newDate));
-    console.log(date);
 
-    const newOrder: IPlaceOrder = {
-      companyID: 7996,
-      totalPrice: sum,
-      orderRows: shoppingCart,
-      createdBy: userForm,
-      created: date
+    const newOrder = {
+      totalPrice : sum,
+      //JSON.stringify(sum),
+      orderRows : shoppingCart,
+      //JSON.stringify(shoppingCart),
+      createdBy : userForm,
+      //JSON.stringify(userForm),
+      created :newDate
+      //JSON.stringify(newDate)
     }
-    axios.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders/', {newOrder})
+    console.log(newOrder);
+
+
+    const baseURL : string = `https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=7996&`;
+
+    axios.post(`${baseURL}`, {newOrder})
     .then(function (response) {
       console.log(response);
     })
     .catch(function (error) {
       console.log(error);
     });
-    
+  
+   /*
+    axios.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=7996', {newOrder})
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    */
     /*
     axios.get('http://medieinstitutet-wie-products.azurewebsites.net/api/products')
     .then(res => {
