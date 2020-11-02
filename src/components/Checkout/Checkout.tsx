@@ -2,6 +2,7 @@ import React, { useEffect, useState, MouseEvent } from 'react';
 import './checkout.css';
 import Userform, { IUserForm } from './Userform';
 import CheckoutItem from './CheckoutItem';
+import moment from 'moment';
 import axios from 'axios';
 
 export interface IShoppingCart {
@@ -9,9 +10,12 @@ export interface IShoppingCart {
 }
 
 interface ICartProduct {
-    name: string;
-    price: number;
-}
+    id: number;
+    productId: number;
+    product: string;
+    amount: number;
+    orderId: number;
+  }
 
 export default function Checkout(props: IShoppingCart) {
   const defaultValue1: IUserForm = {
@@ -23,12 +27,12 @@ export default function Checkout(props: IShoppingCart) {
   };
   const [userForm, setUserForm] = useState(defaultValue1);
 
-  const defaultValue2: Array<{ name: string, price: number }> = [];
+  const defaultValue2: Array<{ id: number, productId: number, product: string, amount: number, orderId: number }> = [];
   const [shoppingCart, setShoppingCart] = useState(defaultValue2);
 
   const [sum, setSum] = useState(0);
 
-  const myCart: Array<{ name: string, price: number }> = [];
+  const myCart: Array<{ id: number, productId: number, product: string, amount: number, orderId: number }> = [];
 
 
   useEffect(() => {
@@ -37,7 +41,7 @@ export default function Checkout(props: IShoppingCart) {
     setShoppingCart(myCart);
     let total = 0;
     for(let i = 0; i< myCart.length; i++) {
-        total += sum + myCart[i].price;
+        total += sum + myCart[i].amount;
     }
     setSum(total);
   }, []);
@@ -48,21 +52,21 @@ export default function Checkout(props: IShoppingCart) {
   }
 
   function placeOrder(e: MouseEvent<HTMLButtonElement>) {
-    let newDate = new Date();
-
+    let newDate = moment().format();
 
     const newOrder = {
-      totalPrice : sum,
-      orderRows : shoppingCart,
-      createdBy : userForm,
-      created :newDate
+      companyId: 7996,
+      totalPrice :  sum,
+      orderRows : JSON.stringify(shoppingCart),
+      createdBy : JSON.stringify(userForm),
+      created : newDate
     }
     console.log(newOrder);
 
 
-    const baseURL : string = `https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=7996&`;
+    const baseURL : string = `https://medieinstitutet-wie-products.azurewebsites.net/api/orders`;
 
-    axios.post(`${baseURL}`, {newOrder})
+    axios.post(baseURL, newOrder)
     .then(function (response) {
       console.log(response);
     })
@@ -75,8 +79,8 @@ export default function Checkout(props: IShoppingCart) {
   const cartItems = shoppingCart.map((product: ICartProduct) => {
       return(
           <CheckoutItem
-          name={product.name}
-          price={product.price}
+          name={product.product}
+          price={product.amount}
           />
       );
   });

@@ -10,7 +10,7 @@ import Checkout from '../Checkout/Checkout';
 
 function Webshop() {
   const [cartTotal, setCartTotal] = useState(0);
-  const myCart: Array<{ name: string, price: number }> = [];
+  const myCart: Array<{ id: number, orderId: number, product: string, amount: number, productId: number }> = [];
   const [cart, setCart] = useState(myCart);
 
   useEffect(() => {
@@ -20,8 +20,11 @@ function Webshop() {
   const addToCart = (props: ICart) => {
     myCart.push(...cart);
     let product = {
-      name: props.name,
-      price: props.price
+      id: props.id,
+      productId: props.id,
+      product: props.product,
+      amount: props.amount,
+      orderId: props.id,
     };
     myCart.push(product);
     setCart(myCart);
