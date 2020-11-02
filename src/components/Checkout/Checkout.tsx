@@ -13,14 +13,6 @@ interface ICartProduct {
     price: number;
 }
 
-interface IPlaceOrder {
-  companyID: number;
-  totalPrice: number;
-  paymentMethod?: string;
-  orderRows: Array<ICartProduct>;
-  createdBy: IUserForm;
-  created: string;
-}
 export default function Checkout(props: IShoppingCart) {
   const defaultValue1: IUserForm = {
     firstname: '',
@@ -58,15 +50,12 @@ export default function Checkout(props: IShoppingCart) {
   function placeOrder(e: MouseEvent<HTMLButtonElement>) {
     let newDate = new Date();
 
+
     const newOrder = {
       totalPrice : sum,
-      //JSON.stringify(sum),
       orderRows : shoppingCart,
-      //JSON.stringify(shoppingCart),
       createdBy : userForm,
-      //JSON.stringify(userForm),
       created :newDate
-      //JSON.stringify(newDate)
     }
     console.log(newOrder);
 
@@ -80,25 +69,8 @@ export default function Checkout(props: IShoppingCart) {
     .catch(function (error) {
       console.log(error);
     });
-  
-   /*
-    axios.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=7996', {newOrder})
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    */
-    /*
-    axios.get('http://medieinstitutet-wie-products.azurewebsites.net/api/products')
-    .then(res => {
-        setProducts(res.data)
-    })
-    .catch(err =>{
-        console.log(err)
-    })
-    */
+
+
   }
   const cartItems = shoppingCart.map((product: ICartProduct) => {
       return(
