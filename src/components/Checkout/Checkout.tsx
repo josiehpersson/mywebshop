@@ -10,11 +10,8 @@ export interface IShoppingCart {
 }
 
 interface ICartProduct {
-    id: number;
     productId: number;
-    product: string;
     amount: number;
-    orderId: number;
   }
 
 export default function Checkout(props: IShoppingCart) {
@@ -27,12 +24,12 @@ export default function Checkout(props: IShoppingCart) {
   };
   const [userForm, setUserForm] = useState(defaultValue1);
 
-  const defaultValue2: Array<{ id: number, productId: number, product: string, amount: number, orderId: number }> = [];
+  const defaultValue2: Array<{ amount: number, productId: number }> = [];
   const [shoppingCart, setShoppingCart] = useState(defaultValue2);
 
   const [sum, setSum] = useState(0);
 
-  const myCart: Array<{ id: number, productId: number, product: string, amount: number, orderId: number }> = [];
+  const myCart: Array<{ amount: number, productId: number}> = [];
 
 
   useEffect(() => {
@@ -48,7 +45,6 @@ export default function Checkout(props: IShoppingCart) {
 
   function updateForm(formValue: IUserForm): void {
     setUserForm(formValue);
-    console.log(userForm);
   }
 
   function placeOrder(e: MouseEvent<HTMLButtonElement>) {
@@ -57,7 +53,7 @@ export default function Checkout(props: IShoppingCart) {
     const newOrder = {
       companyId: 7996,
       totalPrice :  sum,
-      orderRows : JSON.stringify(shoppingCart),
+      orderRows : shoppingCart,
       createdBy : JSON.stringify(userForm),
       created : newDate
     }
@@ -79,7 +75,7 @@ export default function Checkout(props: IShoppingCart) {
   const cartItems = shoppingCart.map((product: ICartProduct) => {
       return(
           <CheckoutItem
-          name={product.product}
+          name={product.productId}
           price={product.amount}
           />
       );

@@ -2,8 +2,8 @@ import React from 'react';
 import './checkout.css';
 
 interface IProps {
-    name: string,
-    price: number
+    name: number,
+    price: number,
 }
 
 export default function CheckoutItem(props:IProps) {
