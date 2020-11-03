@@ -1,0 +1,21 @@
+.order-container {
+    border: solid black 1px;
+    width: 500px;
+    height: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.order-user {
+    font-style: italic;
+}
+
+.order-product {
+    font-style: bold;
+}
+
+.order-total {
+    color: red;
+}
