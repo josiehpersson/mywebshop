@@ -1,4 +1,4 @@
-##Webshop with movies, schoolproject in JavaScript.
+## Webshop with movies, schoolproject in JavaScript.
 `Includes: Axios, TypeScript & Reactjs`
 
 
