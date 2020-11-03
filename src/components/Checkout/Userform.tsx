@@ -1,13 +1,6 @@
 import React, { useState, ChangeEvent } from 'react';
 import './checkout.css';
-
-export interface IUserForm {
-  firstname: string;
-  lastname: string;
-  address: string;
-  zipcode: string;
-  city: string;
-}
+import {IUserForm} from '../../models/IUserForm';
 
 interface IUserFormProps {
   updateParent(values: IUserForm): void;

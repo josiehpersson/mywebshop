@@ -1,7 +1,11 @@
+body {
+    overflow-x: hidden;
+}
+
 .navbar {
     height: 100px;
     width: 100%;
-    background: #FFA800;
+    background: linear-gradient(89.91deg, #FFA800 0.07%, #FF2E00 99.91%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-flow: row;
@@ -10,6 +14,7 @@
     color: white;
     text-decoration: none;
     margin-top: 0px;
+    padding: 10px;
 }
 
 .nav-link, .nav-link:visited {
@@ -19,7 +24,7 @@
 
 .home-link {
     margin-left: 50px;
-    font-size: 300%;
+    font-size: 500%;
 }
 
 .search-container {
@@ -40,9 +45,9 @@
 
 .search-container > i {
     font-size: 150%;
-    color: #FFA800;
+    color: white;
 z-index: 1;
-margin-left: -30px;
+margin-left: 10px;
 
 }
 

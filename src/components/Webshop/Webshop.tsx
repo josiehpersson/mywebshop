@@ -2,23 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './webshop.css';
 import Home from '../Home/Home';
-import ProductPage, { ICart } from '../ProductPage/ProductPage';
+import ProductPage from '../ProductPage/ProductPage';
 import ShoppingCart from '../Cart/Cart';
 import Checkout from '../Checkout/Checkout';
 import Admin from '../Admin/AdminPage';
-
-
+import {ICartProduct} from '../../models/ICartProduct';
 
 function Webshop() {
   const [cartTotal, setCartTotal] = useState(0);
-  const myCart: Array<{ productId: number, amount: number}> = [];
+  const myCart: Array<ICartProduct> = [];
   const [cart, setCart] = useState(myCart);
 
   useEffect(() => {
     setCart(myCart);
   }, []);
 
-  const addToCart = (props: ICart) => {
+  const addToCart = (props: ICartProduct) => {
     myCart.push(...cart);
     let product = {
       productId: props.productId,
@@ -34,14 +33,13 @@ function Webshop() {
     <Router>
       <nav className="navbar">
         <Link to="/" className="nav-link home-link">
-          HOME
+        <i className="fas fa-home"></i>
         </Link>
         <div className="search-container">
-          <input type="text" className="search-input" />
           <i className="fas fa-search"></i>
+          <input type="text" className="search-input" />
         </div>
         <div className="link-container">
-
           <Link to="/admin" className="nav-link">
             <div className="nav-option">
               <span>ADMIN</span>
@@ -49,14 +47,14 @@ function Webshop() {
           </Link>
 
           <Link to="/checkout" className="nav-link">
-          <ShoppingCart total={cartTotal} />
+            <ShoppingCart total={cartTotal} />
           </Link>
         </div>
       </nav>
       <div className="app">
         <Switch>
           <Route path="/checkout">
-          <Checkout  myShoppingCart={cart}/>
+            <Checkout myShoppingCart={cart} />
           </Route>
           <Route path="/admin">
             <Admin />

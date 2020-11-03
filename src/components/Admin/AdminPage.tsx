@@ -1,6 +1,7 @@
 import React, {useEffect, useState}from 'react';
 import axios from 'axios'
-import OrderItem, { IAdminPage } from './OrderItem';
+import OrderItem from './OrderItem';
+import {IAdminPage} from '../../models/IAdminPage';
 
  function AdminPage(){
      const defaultValue: IAdminPage[] =[]
@@ -20,7 +21,7 @@ import OrderItem, { IAdminPage } from './OrderItem';
 
 
     return(
-    <div>
+    <div className="admin-page-container">
         <OrderItem order={orders}></OrderItem>
     </div>
     )

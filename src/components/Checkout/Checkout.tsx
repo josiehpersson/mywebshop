@@ -1,17 +1,14 @@
 import React, { useEffect, useState, MouseEvent } from 'react';
 import './checkout.css';
-import Userform, { IUserForm } from './Userform';
+import Userform from './Userform';
 import CheckoutItem from './CheckoutItem';
+import {ICartProduct} from '../../models/ICartProduct';
+import {IUserForm} from '../../models/IUserForm';
 import moment from 'moment';
 import axios from 'axios';
 
 export interface IShoppingCart {
   myShoppingCart: Array<ICartProduct>;
-}
-
-interface ICartProduct {
-  productId: number;
-  amount: number;
 }
 
 export default function Checkout(props: IShoppingCart) {
@@ -24,12 +21,12 @@ export default function Checkout(props: IShoppingCart) {
   };
   const [userForm, setUserForm] = useState(defaultValue1);
 
-  const defaultValue2: Array<{ amount: number; productId: number }> = [];
+  const defaultValue2: Array<ICartProduct> = [];
   const [shoppingCart, setShoppingCart] = useState(defaultValue2);
 
   const [sum, setSum] = useState(0);
 
-  const myCart: Array<{ amount: number; productId: number }> = [];
+  const myCart: Array<ICartProduct> = [];
 
   useEffect(() => {
     myCart.push(...shoppingCart);
@@ -72,24 +69,23 @@ export default function Checkout(props: IShoppingCart) {
 
   const cartItems = shoppingCart.map((product: ICartProduct) => {
     function removeItem(e: MouseEvent<HTMLButtonElement>) {
-      console.log(shoppingCart);
       const tempCart = [...shoppingCart];
       const item = {
         productId: product.productId,
         amount: product.amount,
       };
       let itemIndex = tempCart.findIndex(function (ind) {
-        return (ind.productId = item.productId);
+        return ind.productId == item.productId;
       });
-      if(itemIndex !== -1)tempCart.splice(itemIndex, 1);
+      if (itemIndex !== -1) {
+        tempCart.splice(itemIndex, 1);
+      }
       let total = 0;
       for (let i = 0; i < tempCart.length; i++) {
         total += sum + tempCart[i].amount;
       }
       setSum(total);
-
       setShoppingCart(tempCart);
-      console.log(shoppingCart);
     }
     return (
       <CheckoutItem
@@ -105,7 +101,7 @@ export default function Checkout(props: IShoppingCart) {
       <div className="user-information">
         <Userform updateParent={updateForm} />
       </div>
-      <div className="cart-container">
+      <div className="checkout-cart-container">
         <div className="shopping-cart">
           <i className="fas fa-shopping-basket"></i>
           {cartItems}

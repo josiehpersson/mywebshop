@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './productPage.css';
+import {ICartProduct} from '../../models/ICartProduct';
 import axios from 'axios';
 
 interface IParams {
   id: string;
 }
 
-export interface ICart {
-  productId: number;
-  amount: number;
-}
 export interface IClickProps {
-  updateCount(value: ICart): void;
+  updateCount(value: ICartProduct): void;
 }
 
 export default function ProductPage(props: IClickProps) {

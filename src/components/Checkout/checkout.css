@@ -3,6 +3,7 @@
     flex-flow: row nowrap;
     justify-content: space-evenly;
     align-items: center;
+    height: 80vh;
 }
 
 form {
@@ -37,10 +38,15 @@ label {
     font-size: 120%;
 }
 
-.cart-container {
+.checkout-cart-container {
     display: flex;
     flex-flow: column nowrap;
+    min-height: 50vh;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 }
+
 .co-list-item {
     width: 20vw;
     display: flex;

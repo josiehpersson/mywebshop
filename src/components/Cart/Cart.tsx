@@ -1,11 +1,8 @@
 import React from 'react';
 import './cart.css';
+import {ICartTotal} from '../../models/ICartTotal';
 
-interface IcartTotal {
-  total: number;
-}
-
-export default function Cart(props: IcartTotal) {
+export default function Cart(props: ICartTotal) {
   return (
       <div className="cart">
         <div className="cart-container">
