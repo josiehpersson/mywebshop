@@ -12,18 +12,11 @@ import OrderItem, { IAdminPage } from './OrderItem';
         .then(res => {
             console.log(res)
             setOrders(res.data)
-            console.log(res.data.orderRows, 'orderRows')
         })
         .catch(err =>{
             console.log(err)
         })
     },[])
-
-    const myOrder: Array <{
-        productId: number,
-        amount: number,
-    }> = [];
-    console.log(orders);
 
 
     return(
