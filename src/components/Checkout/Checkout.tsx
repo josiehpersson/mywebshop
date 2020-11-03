@@ -102,11 +102,11 @@ export default function Checkout(props: IShoppingCart) {
         <Userform updateParent={updateForm} />
       </div>
       <div className="checkout-cart-container">
-        <div className="shopping-cart">
           <i className="fas fa-shopping-basket"></i>
+        <div className="shopping-cart">
           {cartItems}
         </div>
-        <p>{sum} :-</p>
+        <p className="total">Total: {sum} :-</p>
         <button type="button" onClick={placeOrder}>
           Check out
         </button>

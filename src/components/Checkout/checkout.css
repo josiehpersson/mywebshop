@@ -3,7 +3,8 @@
     flex-flow: row nowrap;
     justify-content: space-evenly;
     align-items: center;
-    height: 80vh;
+    min-height: 80vh;
+    max-height: auto;
 }
 
 form {
@@ -46,12 +47,31 @@ label {
     align-items: center;
     text-align: center;
 }
+.shopping-cart {
+    overflow-y: scroll;
+    height: 30vh;
+    border: 1px solid orange;
+}
 
+::-webkit-scrollbar {
+    background-color: transparent;
+    border: 1px solid orange;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+    border-left: 1px solid orange;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: orange;
+}
 .co-list-item {
     width: 20vw;
     display: flex;
     flex-flow: column nowrap;
     box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px;
 
 }
 
@@ -79,4 +99,9 @@ label {
 .fa-shopping-basket::after {
     content: 'Shoppingcart';
     margin-left: 15px;
+}
+
+.total {
+    font-size: 200%;
+    padding: 20px;
 }
