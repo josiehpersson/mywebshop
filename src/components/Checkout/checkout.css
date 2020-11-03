@@ -64,7 +64,7 @@ label {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: orange;
+    background: linear-gradient(180deg,#FFA800 0.07%, #FF2E00 99.91%);
 }
 .co-list-item {
     width: 20vw;
