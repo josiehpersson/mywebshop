@@ -45,14 +45,7 @@ export default function Checkout(props: IShoppingCart) {
   function updateForm(formValue: IUserForm): void {
     setUserForm(formValue);
   }
-  function removeCartItem(e: MouseEvent<HTMLButtonElement>) {
-    const tempCart = [...shoppingCart];
-    const item = e.target;
-    console.log(item);
-    //const indx = myCart.findIndex(v=> v.productId === name);
-    //myCart.splice(myCart.findIndex(v => v.productId === name), 1);
-    //console.log(indx);
-  }
+
   function placeOrder(e: MouseEvent<HTMLButtonElement>) {
     let newDate = moment().format();
 
@@ -79,6 +72,7 @@ export default function Checkout(props: IShoppingCart) {
 
   const cartItems = shoppingCart.map((product: ICartProduct) => {
     function removeItem(e: MouseEvent<HTMLButtonElement>) {
+      console.log(shoppingCart);
       const tempCart = [...shoppingCart];
       const item = {
         productId: product.productId,
@@ -87,9 +81,15 @@ export default function Checkout(props: IShoppingCart) {
       let itemIndex = tempCart.findIndex(function (ind) {
         return (ind.productId = item.productId);
       });
-      if(itemIndex !== -1)tempCart.splice(itemIndex, 1)
+      if(itemIndex !== -1)tempCart.splice(itemIndex, 1);
+      let total = 0;
+      for (let i = 0; i < tempCart.length; i++) {
+        total += sum + tempCart[i].amount;
+      }
+      setSum(total);
 
       setShoppingCart(tempCart);
+      console.log(shoppingCart);
     }
     return (
       <CheckoutItem
