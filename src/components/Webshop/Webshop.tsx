@@ -5,6 +5,7 @@ import Home from '../Home/Home';
 import ProductPage, { ICart } from '../ProductPage/ProductPage';
 import ShoppingCart from '../Cart/Cart';
 import Checkout from '../Checkout/Checkout';
+import Admin from '../Admin/AdminPage';
 
 
 
@@ -41,7 +42,7 @@ function Webshop() {
         </div>
         <div className="link-container">
 
-          <Link to="/login" className="nav-link">
+          <Link to="/admin" className="nav-link">
             <div className="nav-option">
               <span>ADMIN</span>
             </div>
@@ -57,8 +58,8 @@ function Webshop() {
           <Route path="/checkout">
           <Checkout  myShoppingCart={cart}/>
           </Route>
-          <Route path="/login">
-            <h1>LOGIN</h1>
+          <Route path="/admin">
+            <Admin />
           </Route>
           <Route path="/products/:id">
             <ProductPage updateCount={addToCart}></ProductPage>
